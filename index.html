@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập mảng</title>
+</head>
+<body>
+    <script>
+        //KHAI BÁO MẢNG
+        var i = 0;
+        var n;
+        var arr = new Array();
+            for(i; i <= 10; i++) {
+                arr[i] = n = prompt("Nhập giá trị cho phần tử thứ " + i);
+                arr[i+1] = n = prompt("Nhập giá trị cho phần tử thứ " + (i + 1));
+                i++;
+            }
+        document.write('Mảng vừa nhập là: ')
+        document.write(arr.join(', ') + '<br>');
+        //CHẮN LẺ
+        function chanLe(){
+            var chan = 0;
+            var le = 0;
+            var j = 0;
+                for(j = 0; j < arr.length; j++) {
+                    if(arr[j] % 2 == 0) {
+                        chan++;
+                    }
+                    else {
+                        le++;
+                    }
+                }
+                document.write('Số phần tử chẵn trong mảng là: ' + chan);
+                document.write('<br>');
+                document.write('Số phần tử lẻ trong mảng là: ' + le);
+                document.write('<br>');
+            }
+        chanLe();
+        //Tìm xem số nào xuất hiện nhiều nhất trong mảng, xuất hiện bao nhiêu lần
+        function demSoLan() {
+            var value = 1;
+            var m = 1;
+            arr.sort();
+            var kq = arr[0];
+            for (let j = 0; j < arr.length - 1; j++) {
+                if (arr[j] == arr[j + 1]) {
+                    m++;
+                } else {
+                    if (m > value) {
+                        value = m;
+                        kq = arr[j];
+                    }
+                    m = 1;
+                    }
+                if (j == arr.length - 2) {
+                    if (m > value) {
+                        value = m;
+                        kq = arr[j];
+                    }
+                }
+            }
+                if (value == 1 && arr.length > 1 && arr[0] == arr[1]) {
+                    value = arr.length;
+                }
+                document.write("<br>Số xuất hiện nhiêu nhất là: " + kq + " Với số lần xuất hiện là ", value);
+                document.write('<br>')
+            }
+            demSoLan();
+            //Kiểm tra số nguyên tố
+            function soNguyenTo(){
+                var value = 0;
+                var test = true;
+                for (let j = 0; j < arr.length; j++) {
+                    for (let t = 2; t <= Math.sqrt(arr[j]); t++) {
+                        if (arr[j] % t == 0) {
+                            test = false;
+                        }
+                    }
+                    if (test == true || arr[j] == 2) value++;
+                }
+                document.write("Số số nguyên tố trong mảng là: ", value);
+            }
+            soNguyenTo();
+    </script>
+</body>
+</html>
